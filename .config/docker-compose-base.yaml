@@ -25,6 +25,3 @@ services:
       GF_DATAPROXY_LOGGING: 1
       GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: deployr-localllm-panel
 
-volumes:
-  grafana_data:
-  timescaledb_data:

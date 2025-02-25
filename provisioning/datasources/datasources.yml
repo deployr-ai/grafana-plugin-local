@@ -4,4 +4,4 @@ datasources:
   - name: TestData DB
     type: testdata
     uid: trlxrdZVk
-    isDefault: true
+    isDefault: false
