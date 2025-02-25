@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "grafana-ml"
+version = "0.1.0"
+description = "This project shows how Grafana can be connected to an LLM API to automatically perform analytics through image interpretation."
+authors = ["Fabricio <fabricio@deployr.ai>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+yfinance = "^0.2.52"
+prometheus-client = "^0.21.1"
+psycopg2 = "^2.9.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

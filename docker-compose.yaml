@@ -3,3 +3,20 @@ services:
     extends:
       file: .config/docker-compose-base.yaml
       service: grafana
+
+  timescaledb:
+    image: timescale/timescaledb:latest-pg15
+    container_name: timescaledb
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: timescale_db
+    volumes:
+      - timescaledb_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    
+volumes:
+  grafana_data:
+  timescaledb_data:
