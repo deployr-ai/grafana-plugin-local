@@ -5,6 +5,7 @@ import { SimpleOptions } from 'types';
 import { css, cx } from '@emotion/css';
 import { useStyles2} from '@grafana/ui';
 import html2canvas from 'html2canvas';
+import { Stream } from 'stream';
 
 interface Props extends PanelProps<SimpleOptions> {}
 
@@ -86,24 +87,33 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height, fie
   
       const canvas = await html2canvas(document.body, { useCORS: true, logging: false });
       let dataUrl = canvas.toDataURL("image/png");
-      const base64Image = dataUrl.replace(/^data:image\/png;base64,/, "");
-      
-      const response = await fetch(`${options.Address}/api/generate`, {
+      const base64Image = dataUrl.replace(/^data:image\/png;base64,/, "");  
+
+      const response = await fetch('http://localhost:11434/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model: options.Model,
           prompt: prompt,
+          stream: false,
           images: [base64Image],
-          stream: false
         })
       });
-      
-      const responseData = await response.json();
-      setAnalysisText(responseData.response || 'Error processing response');
+      const text = await response.text(); // Obtiene la respuesta como texto
+      console.log("Raw response:", text);
+
+      try {
+        const data = JSON.parse(text);
+        console.log("Parsed JSON:", data);
+        const responseData = data
+        setAnalysisText(responseData.response || 'Error processing response');
   
-      setButtonText('Analyse');
-      setButtonEnabled(true);
+        setButtonText('Analyse');
+        setButtonEnabled(true);
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
+
     } catch (err) {
       console.error(err);
     }
