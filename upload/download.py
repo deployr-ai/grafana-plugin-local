@@ -45,7 +45,6 @@ def get_sp500_data():
                     cursor.execute(f"""INSERT INTO sp500_{asset} (time, close_price)
                         VALUES ('{row["Date"]}', '{float(row["Close"])}')
                     """,)            
-                    print(index)
                 history['Asset'] = asset  
                 
                 data_frames.append(history)
