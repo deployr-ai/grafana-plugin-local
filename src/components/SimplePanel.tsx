@@ -5,7 +5,6 @@ import { SimpleOptions } from 'types';
 import { css, cx } from '@emotion/css';
 import { useStyles2} from '@grafana/ui';
 import html2canvas from 'html2canvas';
-import { Stream } from 'stream';
 
 interface Props extends PanelProps<SimpleOptions> {}
 

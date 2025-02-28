@@ -8,6 +8,10 @@ yarn-error.log*
 
 node_modules/
 
+# Csv
+.csv
+.xlsx
+
 # yarn
 .yarn/cache
 .yarn/unplugged

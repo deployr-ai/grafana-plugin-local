@@ -10,6 +10,8 @@ python = "^3.10"
 yfinance = "^0.2.52"
 prometheus-client = "^0.21.1"
 psycopg2 = "^2.9.10"
+pandas = "^2.2.3"
+lxml = "^5.3.1"
 
 
 [build-system]
