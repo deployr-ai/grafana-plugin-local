@@ -23,6 +23,7 @@ const getStyles = () => {
     `,
     selectInput: css`
       max-width: 130px;
+      height: 23px;
     `,
     checkbox: css`
       margin-right: 10px;
