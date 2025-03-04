@@ -55,12 +55,12 @@ const getStyles = () => {
 };
 
 const analysisOptions: { [key: string]: string }= {
-  Summary: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. DO NOT INCLUDE the AI Analyser panel in your analysis. Provide a brief summary of what the dashboard is displaying, focusing on the most critical and relevant data points. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and ensure that the summary captures the key insights without going into too much detail.`,
-  Insights: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. DO NOT INCLUDE the AI Analyser panel in your analysis. Please explain what the data is showing and share any insights you can gather from it. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and provide detailed insights into the data presented, highlighting any trends, patterns, or anomalies you observe.`,
-  Accessibility: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. DO NOT INCLUDE the AI Analyser panel in your analysis. Please explain what the data is showing in great detail, aiming to provide a clear description for users who may be visually impaired. Describe each panel's content and structure comprehensively. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and ensure that all aspects of the data are explained in a way that is accessible to all users.`,
-  Diagnosis: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. DO NOT INCLUDE the AI Analyser panel in your analysis. Please analyze the data for any potential issues or problems, highlighting correlations and any critical points of concern. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and provide a detailed diagnosis of any potential issues or inefficiencies indicated by the data.`,
-  Comparison: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. DO NOT INCLUDE the AI Analyser panel in your analysis. Compare the data across different panels to highlight any correlations, discrepancies, or significant differences. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and provide a comparative analysis, explaining how the data in various panels relate to each other.`,
-  Forecasting: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. DO NOT INCLUDE the AI Analyser panel in your analysis. Based on the current data, provide a forecast of future trends and usage patterns. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and offer insights into what future data might look like, explaining the basis of your forecasts.`
+  Summary: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. Provide a brief summary of what the dashboard is displaying, focusing on the most critical and relevant data points. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and ensure that the summary captures the key insights without going into too much detail.`,
+  Insights: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. Please explain what the data is showing and share any insights you can gather from it. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and provide detailed insights into the data presented, highlighting any trends, patterns, or anomalies you observe.`,
+  Accessibility: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. Please explain what the data is showing in great detail, aiming to provide a clear description for users who may be visually impaired. Describe each panel's content and structure comprehensively. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and ensure that all aspects of the data are explained in a way that is accessible to all users.`,
+  Diagnosis: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. Please analyze the data for any potential issues or problems, highlighting correlations and any critical points of concern. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and provide a detailed diagnosis of any potential issues or inefficiencies indicated by the data.`,
+  Comparison: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. Compare the data across different panels to highlight any correlations, discrepancies, or significant differences. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and provide a comparative analysis, explaining how the data in various panels relate to each other.`,
+  Forecasting: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. Based on the current data, provide a forecast of future trends and usage patterns. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and offer insights into what future data might look like, explaining the basis of your forecasts.`
 };
 
 export const SimplePanel: React.FC<Props> = ({ options, data, width, height, fieldConfig, id }) => {  
@@ -83,10 +83,18 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height, fie
     try {
       setButtonText('Analysing...');
       setButtonEnabled(false);
+      const elementToIgnore = document.querySelector('[data-testid="data-testid Panel header Chart Analyzer"]');
+
+      if (elementToIgnore instanceof HTMLElement) {
+        elementToIgnore.style.display = 'none'; // Ocultar antes de la captura
+      }
   
       const canvas = await html2canvas(document.body, { useCORS: true, logging: false });
       let dataUrl = canvas.toDataURL("image/png");
       const base64Image = dataUrl.replace(/^data:image\/png;base64,/, "");  
+      if (elementToIgnore instanceof HTMLElement) {
+        elementToIgnore.style.display = 'flex'; 
+      }
 
       const response = await fetch('http://localhost:11434/api/generate', {
         method: 'POST',
