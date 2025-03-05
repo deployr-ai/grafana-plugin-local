@@ -29,21 +29,27 @@ def get_sp500_data():
             cursor.execute(f"""
                 CREATE TABLE IF NOT EXISTS sp500_{asset} (
                     time TIMESTAMPTZ PRIMARY KEY,
-                    close_price DOUBLE PRECISION NULL
+                    open DOUBLE PRECISION NULL,
+                    high DOUBLE PRECISION NULL,
+                    low_price DOUBLE PRECISION NULL,
+                    close_price DOUBLE PRECISION NULL,
+                    volume DOUBLE PRECISION NULL
                 );
             """)
             conn.commit()
             try:
                 asset_tracker = yf.Ticker(asset)
                 history = asset_tracker.history(period="1y")  # Last 1 year
+                print(history)
 
                 if history.empty:
                     continue  # Skip assets with no data
-                history = history[['Close']].reset_index()  
+                history = history.reset_index()  
+                
                 #Agrego
                 for index, row in history.iterrows():
-                    cursor.execute(f"""INSERT INTO sp500_{asset} (time, close_price)
-                        VALUES ('{row["Date"]}', '{float(row["Close"])}')
+                    cursor.execute(f"""INSERT INTO sp500_{asset} (time, open,high,low_price,close_price,volume)
+                        VALUES ('{row["Date"]}', '{float(row["Open"])}', '{float(row["High"])}', '{float(row["Low"])}', '{float(row["Close"])}', '{float(row["Volume"])}')
                     """,)            
                 history['Asset'] = asset  
                 

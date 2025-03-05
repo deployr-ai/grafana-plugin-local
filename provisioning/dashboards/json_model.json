@@ -1,0 +1,2856 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 2,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P40AE60E18F02DE32"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 14,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P40AE60E18F02DE32"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \"time\", close_price FROM sp500_${Ticker:upper};",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "\"time\"",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "close_price",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "asset",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "sp500_prices"
+        }
+      ],
+      "title": "CLOSE PRICE ASSETS ${Ticker:upper} | S&P500",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P40AE60E18F02DE32"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 14,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "Address": "127.0.0.1:11434",
+        "Model": "llama3.2-vision:latest"
+      },
+      "pluginVersion": "1.0.0",
+      "targets": [
+        {
+          "refId": "A"
+        }
+      ],
+      "title": "Chart Analyzer",
+      "type": "deployr-localllm-panel"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P40AE60E18F02DE32"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "id": 3,
+      "options": {
+        "candleStyle": "candles",
+        "colorStrategy": "open-close",
+        "colors": {
+          "down": "red",
+          "up": "green"
+        },
+        "includeAllFields": false,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "mode": "candles+volume",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \"time\", \n      open,\n      high,\n      low_price as low ,\n      close_price as close,\n      volume\nFROM sp500_${Ticker:upper};",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "OHLC FOR ${Ticker:upper}",
+      "type": "candlestick"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": "ACN",
+          "value": "ACN"
+        },
+        "hide": 1,
+        "name": "Ticker",
+        "options": [
+          {
+            "selected": false,
+            "text": "MMM",
+            "value": "MMM"
+          },
+          {
+            "selected": false,
+            "text": "AOS",
+            "value": "AOS"
+          },
+          {
+            "selected": false,
+            "text": "ABT",
+            "value": "ABT"
+          },
+          {
+            "selected": false,
+            "text": "ABBV",
+            "value": "ABBV"
+          },
+          {
+            "selected": true,
+            "text": "ACN",
+            "value": "ACN"
+          },
+          {
+            "selected": false,
+            "text": "ADBE",
+            "value": "ADBE"
+          },
+          {
+            "selected": false,
+            "text": "AMD",
+            "value": "AMD"
+          },
+          {
+            "selected": false,
+            "text": "AES",
+            "value": "AES"
+          },
+          {
+            "selected": false,
+            "text": "AFL",
+            "value": "AFL"
+          },
+          {
+            "selected": false,
+            "text": "A",
+            "value": "A"
+          },
+          {
+            "selected": false,
+            "text": "APD",
+            "value": "APD"
+          },
+          {
+            "selected": false,
+            "text": "ABNB",
+            "value": "ABNB"
+          },
+          {
+            "selected": false,
+            "text": "AKAM",
+            "value": "AKAM"
+          },
+          {
+            "selected": false,
+            "text": "ALB",
+            "value": "ALB"
+          },
+          {
+            "selected": false,
+            "text": "ARE",
+            "value": "ARE"
+          },
+          {
+            "selected": false,
+            "text": "ALGN",
+            "value": "ALGN"
+          },
+          {
+            "selected": false,
+            "text": "ALLE",
+            "value": "ALLE"
+          },
+          {
+            "selected": false,
+            "text": "LNT",
+            "value": "LNT"
+          },
+          {
+            "selected": false,
+            "text": "ALL",
+            "value": "ALL"
+          },
+          {
+            "selected": false,
+            "text": "GOOGL",
+            "value": "GOOGL"
+          },
+          {
+            "selected": false,
+            "text": "GOOG",
+            "value": "GOOG"
+          },
+          {
+            "selected": false,
+            "text": "MO",
+            "value": "MO"
+          },
+          {
+            "selected": false,
+            "text": "AMZN",
+            "value": "AMZN"
+          },
+          {
+            "selected": false,
+            "text": "AMCR",
+            "value": "AMCR"
+          },
+          {
+            "selected": false,
+            "text": "AEE",
+            "value": "AEE"
+          },
+          {
+            "selected": false,
+            "text": "AEP",
+            "value": "AEP"
+          },
+          {
+            "selected": false,
+            "text": "AXP",
+            "value": "AXP"
+          },
+          {
+            "selected": false,
+            "text": "AIG",
+            "value": "AIG"
+          },
+          {
+            "selected": false,
+            "text": "AMT",
+            "value": "AMT"
+          },
+          {
+            "selected": false,
+            "text": "AWK",
+            "value": "AWK"
+          },
+          {
+            "selected": false,
+            "text": "AMP",
+            "value": "AMP"
+          },
+          {
+            "selected": false,
+            "text": "AME",
+            "value": "AME"
+          },
+          {
+            "selected": false,
+            "text": "AMGN",
+            "value": "AMGN"
+          },
+          {
+            "selected": false,
+            "text": "APH",
+            "value": "APH"
+          },
+          {
+            "selected": false,
+            "text": "ADI",
+            "value": "ADI"
+          },
+          {
+            "selected": false,
+            "text": "ANSS",
+            "value": "ANSS"
+          },
+          {
+            "selected": false,
+            "text": "AON",
+            "value": "AON"
+          },
+          {
+            "selected": false,
+            "text": "APA",
+            "value": "APA"
+          },
+          {
+            "selected": false,
+            "text": "APO",
+            "value": "APO"
+          },
+          {
+            "selected": false,
+            "text": "AAPL",
+            "value": "AAPL"
+          },
+          {
+            "selected": false,
+            "text": "AMAT",
+            "value": "AMAT"
+          },
+          {
+            "selected": false,
+            "text": "APTV",
+            "value": "APTV"
+          },
+          {
+            "selected": false,
+            "text": "ACGL",
+            "value": "ACGL"
+          },
+          {
+            "selected": false,
+            "text": "ADM",
+            "value": "ADM"
+          },
+          {
+            "selected": false,
+            "text": "ANET",
+            "value": "ANET"
+          },
+          {
+            "selected": false,
+            "text": "AJG",
+            "value": "AJG"
+          },
+          {
+            "selected": false,
+            "text": "AIZ",
+            "value": "AIZ"
+          },
+          {
+            "selected": false,
+            "text": "T",
+            "value": "T"
+          },
+          {
+            "selected": false,
+            "text": "ATO",
+            "value": "ATO"
+          },
+          {
+            "selected": false,
+            "text": "ADSK",
+            "value": "ADSK"
+          },
+          {
+            "selected": false,
+            "text": "ADP",
+            "value": "ADP"
+          },
+          {
+            "selected": false,
+            "text": "AZO",
+            "value": "AZO"
+          },
+          {
+            "selected": false,
+            "text": "AVB",
+            "value": "AVB"
+          },
+          {
+            "selected": false,
+            "text": "AVY",
+            "value": "AVY"
+          },
+          {
+            "selected": false,
+            "text": "AXON",
+            "value": "AXON"
+          },
+          {
+            "selected": false,
+            "text": "BKR",
+            "value": "BKR"
+          },
+          {
+            "selected": false,
+            "text": "BALL",
+            "value": "BALL"
+          },
+          {
+            "selected": false,
+            "text": "BAC",
+            "value": "BAC"
+          },
+          {
+            "selected": false,
+            "text": "BAX",
+            "value": "BAX"
+          },
+          {
+            "selected": false,
+            "text": "BDX",
+            "value": "BDX"
+          },
+          {
+            "selected": false,
+            "text": "B",
+            "value": "B"
+          },
+          {
+            "selected": false,
+            "text": "BBY",
+            "value": "BBY"
+          },
+          {
+            "selected": false,
+            "text": "TECH",
+            "value": "TECH"
+          },
+          {
+            "selected": false,
+            "text": "BIIB",
+            "value": "BIIB"
+          },
+          {
+            "selected": false,
+            "text": "BLK",
+            "value": "BLK"
+          },
+          {
+            "selected": false,
+            "text": "BX",
+            "value": "BX"
+          },
+          {
+            "selected": false,
+            "text": "BK",
+            "value": "BK"
+          },
+          {
+            "selected": false,
+            "text": "BA",
+            "value": "BA"
+          },
+          {
+            "selected": false,
+            "text": "BKNG",
+            "value": "BKNG"
+          },
+          {
+            "selected": false,
+            "text": "BWA",
+            "value": "BWA"
+          },
+          {
+            "selected": false,
+            "text": "BSX",
+            "value": "BSX"
+          },
+          {
+            "selected": false,
+            "text": "BMY",
+            "value": "BMY"
+          },
+          {
+            "selected": false,
+            "text": "AVGO",
+            "value": "AVGO"
+          },
+          {
+            "selected": false,
+            "text": "BR",
+            "value": "BR"
+          },
+          {
+            "selected": false,
+            "text": "BRO",
+            "value": "BRO"
+          },
+          {
+            "selected": false,
+            "text": "B",
+            "value": "B"
+          },
+          {
+            "selected": false,
+            "text": "BLDR",
+            "value": "BLDR"
+          },
+          {
+            "selected": false,
+            "text": "BG",
+            "value": "BG"
+          },
+          {
+            "selected": false,
+            "text": "BXP",
+            "value": "BXP"
+          },
+          {
+            "selected": false,
+            "text": "CHRW",
+            "value": "CHRW"
+          },
+          {
+            "selected": false,
+            "text": "CDNS",
+            "value": "CDNS"
+          },
+          {
+            "selected": false,
+            "text": "CZR",
+            "value": "CZR"
+          },
+          {
+            "selected": false,
+            "text": "CPT",
+            "value": "CPT"
+          },
+          {
+            "selected": false,
+            "text": "CPB",
+            "value": "CPB"
+          },
+          {
+            "selected": false,
+            "text": "COF",
+            "value": "COF"
+          },
+          {
+            "selected": false,
+            "text": "CAH",
+            "value": "CAH"
+          },
+          {
+            "selected": false,
+            "text": "KMX",
+            "value": "KMX"
+          },
+          {
+            "selected": false,
+            "text": "CCL",
+            "value": "CCL"
+          },
+          {
+            "selected": false,
+            "text": "CARR",
+            "value": "CARR"
+          },
+          {
+            "selected": false,
+            "text": "CAT",
+            "value": "CAT"
+          },
+          {
+            "selected": false,
+            "text": "CBOE",
+            "value": "CBOE"
+          },
+          {
+            "selected": false,
+            "text": "CBRE",
+            "value": "CBRE"
+          },
+          {
+            "selected": false,
+            "text": "CDW",
+            "value": "CDW"
+          },
+          {
+            "selected": false,
+            "text": "CE",
+            "value": "CE"
+          },
+          {
+            "selected": false,
+            "text": "COR",
+            "value": "COR"
+          },
+          {
+            "selected": false,
+            "text": "CNC",
+            "value": "CNC"
+          },
+          {
+            "selected": false,
+            "text": "CNP",
+            "value": "CNP"
+          },
+          {
+            "selected": false,
+            "text": "CF",
+            "value": "CF"
+          },
+          {
+            "selected": false,
+            "text": "CRL",
+            "value": "CRL"
+          },
+          {
+            "selected": false,
+            "text": "SCHW",
+            "value": "SCHW"
+          },
+          {
+            "selected": false,
+            "text": "CHTR",
+            "value": "CHTR"
+          },
+          {
+            "selected": false,
+            "text": "CVX",
+            "value": "CVX"
+          },
+          {
+            "selected": false,
+            "text": "CMG",
+            "value": "CMG"
+          },
+          {
+            "selected": false,
+            "text": "CB",
+            "value": "CB"
+          },
+          {
+            "selected": false,
+            "text": "CHD",
+            "value": "CHD"
+          },
+          {
+            "selected": false,
+            "text": "CI",
+            "value": "CI"
+          },
+          {
+            "selected": false,
+            "text": "CINF",
+            "value": "CINF"
+          },
+          {
+            "selected": false,
+            "text": "CTAS",
+            "value": "CTAS"
+          },
+          {
+            "selected": false,
+            "text": "CSCO",
+            "value": "CSCO"
+          },
+          {
+            "selected": false,
+            "text": "C",
+            "value": "C"
+          },
+          {
+            "selected": false,
+            "text": "CFG",
+            "value": "CFG"
+          },
+          {
+            "selected": false,
+            "text": "CLX",
+            "value": "CLX"
+          },
+          {
+            "selected": false,
+            "text": "CME",
+            "value": "CME"
+          },
+          {
+            "selected": false,
+            "text": "CMS",
+            "value": "CMS"
+          },
+          {
+            "selected": false,
+            "text": "KO",
+            "value": "KO"
+          },
+          {
+            "selected": false,
+            "text": "CTSH",
+            "value": "CTSH"
+          },
+          {
+            "selected": false,
+            "text": "CL",
+            "value": "CL"
+          },
+          {
+            "selected": false,
+            "text": "CMCSA",
+            "value": "CMCSA"
+          },
+          {
+            "selected": false,
+            "text": "CAG",
+            "value": "CAG"
+          },
+          {
+            "selected": false,
+            "text": "COP",
+            "value": "COP"
+          },
+          {
+            "selected": false,
+            "text": "ED",
+            "value": "ED"
+          },
+          {
+            "selected": false,
+            "text": "STZ",
+            "value": "STZ"
+          },
+          {
+            "selected": false,
+            "text": "CEG",
+            "value": "CEG"
+          },
+          {
+            "selected": false,
+            "text": "COO",
+            "value": "COO"
+          },
+          {
+            "selected": false,
+            "text": "CPRT",
+            "value": "CPRT"
+          },
+          {
+            "selected": false,
+            "text": "GLW",
+            "value": "GLW"
+          },
+          {
+            "selected": false,
+            "text": "CPAY",
+            "value": "CPAY"
+          },
+          {
+            "selected": false,
+            "text": "CTVA",
+            "value": "CTVA"
+          },
+          {
+            "selected": false,
+            "text": "CSGP",
+            "value": "CSGP"
+          },
+          {
+            "selected": false,
+            "text": "COST",
+            "value": "COST"
+          },
+          {
+            "selected": false,
+            "text": "CTRA",
+            "value": "CTRA"
+          },
+          {
+            "selected": false,
+            "text": "CRWD",
+            "value": "CRWD"
+          },
+          {
+            "selected": false,
+            "text": "CCI",
+            "value": "CCI"
+          },
+          {
+            "selected": false,
+            "text": "CSX",
+            "value": "CSX"
+          },
+          {
+            "selected": false,
+            "text": "CMI",
+            "value": "CMI"
+          },
+          {
+            "selected": false,
+            "text": "CVS",
+            "value": "CVS"
+          },
+          {
+            "selected": false,
+            "text": "DHR",
+            "value": "DHR"
+          },
+          {
+            "selected": false,
+            "text": "DRI",
+            "value": "DRI"
+          },
+          {
+            "selected": false,
+            "text": "DVA",
+            "value": "DVA"
+          },
+          {
+            "selected": false,
+            "text": "DAY",
+            "value": "DAY"
+          },
+          {
+            "selected": false,
+            "text": "DECK",
+            "value": "DECK"
+          },
+          {
+            "selected": false,
+            "text": "DE",
+            "value": "DE"
+          },
+          {
+            "selected": false,
+            "text": "DELL",
+            "value": "DELL"
+          },
+          {
+            "selected": false,
+            "text": "DAL",
+            "value": "DAL"
+          },
+          {
+            "selected": false,
+            "text": "DVN",
+            "value": "DVN"
+          },
+          {
+            "selected": false,
+            "text": "DXCM",
+            "value": "DXCM"
+          },
+          {
+            "selected": false,
+            "text": "FANG",
+            "value": "FANG"
+          },
+          {
+            "selected": false,
+            "text": "DLR",
+            "value": "DLR"
+          },
+          {
+            "selected": false,
+            "text": "DFS",
+            "value": "DFS"
+          },
+          {
+            "selected": false,
+            "text": "DG",
+            "value": "DG"
+          },
+          {
+            "selected": false,
+            "text": "DLTR",
+            "value": "DLTR"
+          },
+          {
+            "selected": false,
+            "text": "D",
+            "value": "D"
+          },
+          {
+            "selected": false,
+            "text": "DPZ",
+            "value": "DPZ"
+          },
+          {
+            "selected": false,
+            "text": "DOV",
+            "value": "DOV"
+          },
+          {
+            "selected": false,
+            "text": "DOW",
+            "value": "DOW"
+          },
+          {
+            "selected": false,
+            "text": "DHI",
+            "value": "DHI"
+          },
+          {
+            "selected": false,
+            "text": "DTE",
+            "value": "DTE"
+          },
+          {
+            "selected": false,
+            "text": "DUK",
+            "value": "DUK"
+          },
+          {
+            "selected": false,
+            "text": "DD",
+            "value": "DD"
+          },
+          {
+            "selected": false,
+            "text": "EMN",
+            "value": "EMN"
+          },
+          {
+            "selected": false,
+            "text": "ETN",
+            "value": "ETN"
+          },
+          {
+            "selected": false,
+            "text": "EBAY",
+            "value": "EBAY"
+          },
+          {
+            "selected": false,
+            "text": "ECL",
+            "value": "ECL"
+          },
+          {
+            "selected": false,
+            "text": "EIX",
+            "value": "EIX"
+          },
+          {
+            "selected": false,
+            "text": "EW",
+            "value": "EW"
+          },
+          {
+            "selected": false,
+            "text": "EA",
+            "value": "EA"
+          },
+          {
+            "selected": false,
+            "text": "ELV",
+            "value": "ELV"
+          },
+          {
+            "selected": false,
+            "text": "EMR",
+            "value": "EMR"
+          },
+          {
+            "selected": false,
+            "text": "ENPH",
+            "value": "ENPH"
+          },
+          {
+            "selected": false,
+            "text": "ETR",
+            "value": "ETR"
+          },
+          {
+            "selected": false,
+            "text": "EOG",
+            "value": "EOG"
+          },
+          {
+            "selected": false,
+            "text": "EPAM",
+            "value": "EPAM"
+          },
+          {
+            "selected": false,
+            "text": "EQT",
+            "value": "EQT"
+          },
+          {
+            "selected": false,
+            "text": "EFX",
+            "value": "EFX"
+          },
+          {
+            "selected": false,
+            "text": "EQIX",
+            "value": "EQIX"
+          },
+          {
+            "selected": false,
+            "text": "EQR",
+            "value": "EQR"
+          },
+          {
+            "selected": false,
+            "text": "ERIE",
+            "value": "ERIE"
+          },
+          {
+            "selected": false,
+            "text": "ESS",
+            "value": "ESS"
+          },
+          {
+            "selected": false,
+            "text": "EL",
+            "value": "EL"
+          },
+          {
+            "selected": false,
+            "text": "EG",
+            "value": "EG"
+          },
+          {
+            "selected": false,
+            "text": "EVRG",
+            "value": "EVRG"
+          },
+          {
+            "selected": false,
+            "text": "ES",
+            "value": "ES"
+          },
+          {
+            "selected": false,
+            "text": "EXC",
+            "value": "EXC"
+          },
+          {
+            "selected": false,
+            "text": "EXPE",
+            "value": "EXPE"
+          },
+          {
+            "selected": false,
+            "text": "EXPD",
+            "value": "EXPD"
+          },
+          {
+            "selected": false,
+            "text": "EXR",
+            "value": "EXR"
+          },
+          {
+            "selected": false,
+            "text": "XOM",
+            "value": "XOM"
+          },
+          {
+            "selected": false,
+            "text": "FFIV",
+            "value": "FFIV"
+          },
+          {
+            "selected": false,
+            "text": "FDS",
+            "value": "FDS"
+          },
+          {
+            "selected": false,
+            "text": "FICO",
+            "value": "FICO"
+          },
+          {
+            "selected": false,
+            "text": "FAST",
+            "value": "FAST"
+          },
+          {
+            "selected": false,
+            "text": "FRT",
+            "value": "FRT"
+          },
+          {
+            "selected": false,
+            "text": "FDX",
+            "value": "FDX"
+          },
+          {
+            "selected": false,
+            "text": "FIS",
+            "value": "FIS"
+          },
+          {
+            "selected": false,
+            "text": "FITB",
+            "value": "FITB"
+          },
+          {
+            "selected": false,
+            "text": "FSLR",
+            "value": "FSLR"
+          },
+          {
+            "selected": false,
+            "text": "FE",
+            "value": "FE"
+          },
+          {
+            "selected": false,
+            "text": "FI",
+            "value": "FI"
+          },
+          {
+            "selected": false,
+            "text": "FMC",
+            "value": "FMC"
+          },
+          {
+            "selected": false,
+            "text": "F",
+            "value": "F"
+          },
+          {
+            "selected": false,
+            "text": "FTNT",
+            "value": "FTNT"
+          },
+          {
+            "selected": false,
+            "text": "FTV",
+            "value": "FTV"
+          },
+          {
+            "selected": false,
+            "text": "FOXA",
+            "value": "FOXA"
+          },
+          {
+            "selected": false,
+            "text": "FOX",
+            "value": "FOX"
+          },
+          {
+            "selected": false,
+            "text": "BEN",
+            "value": "BEN"
+          },
+          {
+            "selected": false,
+            "text": "FCX",
+            "value": "FCX"
+          },
+          {
+            "selected": false,
+            "text": "GRMN",
+            "value": "GRMN"
+          },
+          {
+            "selected": false,
+            "text": "IT",
+            "value": "IT"
+          },
+          {
+            "selected": false,
+            "text": "GE",
+            "value": "GE"
+          },
+          {
+            "selected": false,
+            "text": "GEHC",
+            "value": "GEHC"
+          },
+          {
+            "selected": false,
+            "text": "GEV",
+            "value": "GEV"
+          },
+          {
+            "selected": false,
+            "text": "GEN",
+            "value": "GEN"
+          },
+          {
+            "selected": false,
+            "text": "GNRC",
+            "value": "GNRC"
+          },
+          {
+            "selected": false,
+            "text": "GD",
+            "value": "GD"
+          },
+          {
+            "selected": false,
+            "text": "GIS",
+            "value": "GIS"
+          },
+          {
+            "selected": false,
+            "text": "GM",
+            "value": "GM"
+          },
+          {
+            "selected": false,
+            "text": "GPC",
+            "value": "GPC"
+          },
+          {
+            "selected": false,
+            "text": "GILD",
+            "value": "GILD"
+          },
+          {
+            "selected": false,
+            "text": "GPN",
+            "value": "GPN"
+          },
+          {
+            "selected": false,
+            "text": "GL",
+            "value": "GL"
+          },
+          {
+            "selected": false,
+            "text": "GDDY",
+            "value": "GDDY"
+          },
+          {
+            "selected": false,
+            "text": "GS",
+            "value": "GS"
+          },
+          {
+            "selected": false,
+            "text": "HAL",
+            "value": "HAL"
+          },
+          {
+            "selected": false,
+            "text": "HIG",
+            "value": "HIG"
+          },
+          {
+            "selected": false,
+            "text": "HAS",
+            "value": "HAS"
+          },
+          {
+            "selected": false,
+            "text": "HCA",
+            "value": "HCA"
+          },
+          {
+            "selected": false,
+            "text": "DOC",
+            "value": "DOC"
+          },
+          {
+            "selected": false,
+            "text": "HSIC",
+            "value": "HSIC"
+          },
+          {
+            "selected": false,
+            "text": "HSY",
+            "value": "HSY"
+          },
+          {
+            "selected": false,
+            "text": "HES",
+            "value": "HES"
+          },
+          {
+            "selected": false,
+            "text": "HPE",
+            "value": "HPE"
+          },
+          {
+            "selected": false,
+            "text": "HLT",
+            "value": "HLT"
+          },
+          {
+            "selected": false,
+            "text": "HOLX",
+            "value": "HOLX"
+          },
+          {
+            "selected": false,
+            "text": "HD",
+            "value": "HD"
+          },
+          {
+            "selected": false,
+            "text": "HON",
+            "value": "HON"
+          },
+          {
+            "selected": false,
+            "text": "HRL",
+            "value": "HRL"
+          },
+          {
+            "selected": false,
+            "text": "HST",
+            "value": "HST"
+          },
+          {
+            "selected": false,
+            "text": "HWM",
+            "value": "HWM"
+          },
+          {
+            "selected": false,
+            "text": "HPQ",
+            "value": "HPQ"
+          },
+          {
+            "selected": false,
+            "text": "HUBB",
+            "value": "HUBB"
+          },
+          {
+            "selected": false,
+            "text": "HUM",
+            "value": "HUM"
+          },
+          {
+            "selected": false,
+            "text": "HBAN",
+            "value": "HBAN"
+          },
+          {
+            "selected": false,
+            "text": "HII",
+            "value": "HII"
+          },
+          {
+            "selected": false,
+            "text": "IBM",
+            "value": "IBM"
+          },
+          {
+            "selected": false,
+            "text": "IEX",
+            "value": "IEX"
+          },
+          {
+            "selected": false,
+            "text": "IDXX",
+            "value": "IDXX"
+          },
+          {
+            "selected": false,
+            "text": "ITW",
+            "value": "ITW"
+          },
+          {
+            "selected": false,
+            "text": "INCY",
+            "value": "INCY"
+          },
+          {
+            "selected": false,
+            "text": "IR",
+            "value": "IR"
+          },
+          {
+            "selected": false,
+            "text": "PODD",
+            "value": "PODD"
+          },
+          {
+            "selected": false,
+            "text": "INTC",
+            "value": "INTC"
+          },
+          {
+            "selected": false,
+            "text": "ICE",
+            "value": "ICE"
+          },
+          {
+            "selected": false,
+            "text": "IFF",
+            "value": "IFF"
+          },
+          {
+            "selected": false,
+            "text": "IP",
+            "value": "IP"
+          },
+          {
+            "selected": false,
+            "text": "IPG",
+            "value": "IPG"
+          },
+          {
+            "selected": false,
+            "text": "INTU",
+            "value": "INTU"
+          },
+          {
+            "selected": false,
+            "text": "ISRG",
+            "value": "ISRG"
+          },
+          {
+            "selected": false,
+            "text": "IVZ",
+            "value": "IVZ"
+          },
+          {
+            "selected": false,
+            "text": "INVH",
+            "value": "INVH"
+          },
+          {
+            "selected": false,
+            "text": "IQV",
+            "value": "IQV"
+          },
+          {
+            "selected": false,
+            "text": "IRM",
+            "value": "IRM"
+          },
+          {
+            "selected": false,
+            "text": "JBHT",
+            "value": "JBHT"
+          },
+          {
+            "selected": false,
+            "text": "JBL",
+            "value": "JBL"
+          },
+          {
+            "selected": false,
+            "text": "JKHY",
+            "value": "JKHY"
+          },
+          {
+            "selected": false,
+            "text": "J",
+            "value": "J"
+          },
+          {
+            "selected": false,
+            "text": "JNJ",
+            "value": "JNJ"
+          },
+          {
+            "selected": false,
+            "text": "JCI",
+            "value": "JCI"
+          },
+          {
+            "selected": false,
+            "text": "JPM",
+            "value": "JPM"
+          },
+          {
+            "selected": false,
+            "text": "JNPR",
+            "value": "JNPR"
+          },
+          {
+            "selected": false,
+            "text": "K",
+            "value": "K"
+          },
+          {
+            "selected": false,
+            "text": "KVUE",
+            "value": "KVUE"
+          },
+          {
+            "selected": false,
+            "text": "KDP",
+            "value": "KDP"
+          },
+          {
+            "selected": false,
+            "text": "KEY",
+            "value": "KEY"
+          },
+          {
+            "selected": false,
+            "text": "KEYS",
+            "value": "KEYS"
+          },
+          {
+            "selected": false,
+            "text": "KMB",
+            "value": "KMB"
+          },
+          {
+            "selected": false,
+            "text": "KIM",
+            "value": "KIM"
+          },
+          {
+            "selected": false,
+            "text": "KMI",
+            "value": "KMI"
+          },
+          {
+            "selected": false,
+            "text": "KKR",
+            "value": "KKR"
+          },
+          {
+            "selected": false,
+            "text": "KLAC",
+            "value": "KLAC"
+          },
+          {
+            "selected": false,
+            "text": "KHC",
+            "value": "KHC"
+          },
+          {
+            "selected": false,
+            "text": "KR",
+            "value": "KR"
+          },
+          {
+            "selected": false,
+            "text": "LHX",
+            "value": "LHX"
+          },
+          {
+            "selected": false,
+            "text": "LH",
+            "value": "LH"
+          },
+          {
+            "selected": false,
+            "text": "LRCX",
+            "value": "LRCX"
+          },
+          {
+            "selected": false,
+            "text": "LW",
+            "value": "LW"
+          },
+          {
+            "selected": false,
+            "text": "LVS",
+            "value": "LVS"
+          },
+          {
+            "selected": false,
+            "text": "LDOS",
+            "value": "LDOS"
+          },
+          {
+            "selected": false,
+            "text": "LEN",
+            "value": "LEN"
+          },
+          {
+            "selected": false,
+            "text": "LII",
+            "value": "LII"
+          },
+          {
+            "selected": false,
+            "text": "LLY",
+            "value": "LLY"
+          },
+          {
+            "selected": false,
+            "text": "LIN",
+            "value": "LIN"
+          },
+          {
+            "selected": false,
+            "text": "LYV",
+            "value": "LYV"
+          },
+          {
+            "selected": false,
+            "text": "LKQ",
+            "value": "LKQ"
+          },
+          {
+            "selected": false,
+            "text": "LMT",
+            "value": "LMT"
+          },
+          {
+            "selected": false,
+            "text": "L",
+            "value": "L"
+          },
+          {
+            "selected": false,
+            "text": "LOW",
+            "value": "LOW"
+          },
+          {
+            "selected": false,
+            "text": "LULU",
+            "value": "LULU"
+          },
+          {
+            "selected": false,
+            "text": "LYB",
+            "value": "LYB"
+          },
+          {
+            "selected": false,
+            "text": "MTB",
+            "value": "MTB"
+          },
+          {
+            "selected": false,
+            "text": "MPC",
+            "value": "MPC"
+          },
+          {
+            "selected": false,
+            "text": "MKTX",
+            "value": "MKTX"
+          },
+          {
+            "selected": false,
+            "text": "MAR",
+            "value": "MAR"
+          },
+          {
+            "selected": false,
+            "text": "MMC",
+            "value": "MMC"
+          },
+          {
+            "selected": false,
+            "text": "MLM",
+            "value": "MLM"
+          },
+          {
+            "selected": false,
+            "text": "MAS",
+            "value": "MAS"
+          },
+          {
+            "selected": false,
+            "text": "MA",
+            "value": "MA"
+          },
+          {
+            "selected": false,
+            "text": "MTCH",
+            "value": "MTCH"
+          },
+          {
+            "selected": false,
+            "text": "MKC",
+            "value": "MKC"
+          },
+          {
+            "selected": false,
+            "text": "MCD",
+            "value": "MCD"
+          },
+          {
+            "selected": false,
+            "text": "MCK",
+            "value": "MCK"
+          },
+          {
+            "selected": false,
+            "text": "MDT",
+            "value": "MDT"
+          },
+          {
+            "selected": false,
+            "text": "MRK",
+            "value": "MRK"
+          },
+          {
+            "selected": false,
+            "text": "META",
+            "value": "META"
+          },
+          {
+            "selected": false,
+            "text": "MET",
+            "value": "MET"
+          },
+          {
+            "selected": false,
+            "text": "MTD",
+            "value": "MTD"
+          },
+          {
+            "selected": false,
+            "text": "MGM",
+            "value": "MGM"
+          },
+          {
+            "selected": false,
+            "text": "MCHP",
+            "value": "MCHP"
+          },
+          {
+            "selected": false,
+            "text": "MU",
+            "value": "MU"
+          },
+          {
+            "selected": false,
+            "text": "MSFT",
+            "value": "MSFT"
+          },
+          {
+            "selected": false,
+            "text": "MAA",
+            "value": "MAA"
+          },
+          {
+            "selected": false,
+            "text": "MRNA",
+            "value": "MRNA"
+          },
+          {
+            "selected": false,
+            "text": "MHK",
+            "value": "MHK"
+          },
+          {
+            "selected": false,
+            "text": "MOH",
+            "value": "MOH"
+          },
+          {
+            "selected": false,
+            "text": "TAP",
+            "value": "TAP"
+          },
+          {
+            "selected": false,
+            "text": "MDLZ",
+            "value": "MDLZ"
+          },
+          {
+            "selected": false,
+            "text": "MPWR",
+            "value": "MPWR"
+          },
+          {
+            "selected": false,
+            "text": "MNST",
+            "value": "MNST"
+          },
+          {
+            "selected": false,
+            "text": "MCO",
+            "value": "MCO"
+          },
+          {
+            "selected": false,
+            "text": "MS",
+            "value": "MS"
+          },
+          {
+            "selected": false,
+            "text": "MOS",
+            "value": "MOS"
+          },
+          {
+            "selected": false,
+            "text": "MSI",
+            "value": "MSI"
+          },
+          {
+            "selected": false,
+            "text": "MSCI",
+            "value": "MSCI"
+          },
+          {
+            "selected": false,
+            "text": "NDAQ",
+            "value": "NDAQ"
+          },
+          {
+            "selected": false,
+            "text": "NTAP",
+            "value": "NTAP"
+          },
+          {
+            "selected": false,
+            "text": "NFLX",
+            "value": "NFLX"
+          },
+          {
+            "selected": false,
+            "text": "NEM",
+            "value": "NEM"
+          },
+          {
+            "selected": false,
+            "text": "NWSA",
+            "value": "NWSA"
+          },
+          {
+            "selected": false,
+            "text": "NWS",
+            "value": "NWS"
+          },
+          {
+            "selected": false,
+            "text": "NEE",
+            "value": "NEE"
+          },
+          {
+            "selected": false,
+            "text": "NKE",
+            "value": "NKE"
+          },
+          {
+            "selected": false,
+            "text": "NI",
+            "value": "NI"
+          },
+          {
+            "selected": false,
+            "text": "NDSN",
+            "value": "NDSN"
+          },
+          {
+            "selected": false,
+            "text": "NSC",
+            "value": "NSC"
+          },
+          {
+            "selected": false,
+            "text": "NTRS",
+            "value": "NTRS"
+          },
+          {
+            "selected": false,
+            "text": "NOC",
+            "value": "NOC"
+          },
+          {
+            "selected": false,
+            "text": "NCLH",
+            "value": "NCLH"
+          },
+          {
+            "selected": false,
+            "text": "NRG",
+            "value": "NRG"
+          },
+          {
+            "selected": false,
+            "text": "NUE",
+            "value": "NUE"
+          },
+          {
+            "selected": false,
+            "text": "NVDA",
+            "value": "NVDA"
+          },
+          {
+            "selected": false,
+            "text": "NVR",
+            "value": "NVR"
+          },
+          {
+            "selected": false,
+            "text": "NXPI",
+            "value": "NXPI"
+          },
+          {
+            "selected": false,
+            "text": "ORLY",
+            "value": "ORLY"
+          },
+          {
+            "selected": false,
+            "text": "OXY",
+            "value": "OXY"
+          },
+          {
+            "selected": false,
+            "text": "ODFL",
+            "value": "ODFL"
+          },
+          {
+            "selected": false,
+            "text": "OMC",
+            "value": "OMC"
+          },
+          {
+            "selected": false,
+            "text": "ON",
+            "value": "ON"
+          },
+          {
+            "selected": false,
+            "text": "OKE",
+            "value": "OKE"
+          },
+          {
+            "selected": false,
+            "text": "ORCL",
+            "value": "ORCL"
+          },
+          {
+            "selected": false,
+            "text": "OTIS",
+            "value": "OTIS"
+          },
+          {
+            "selected": false,
+            "text": "PCAR",
+            "value": "PCAR"
+          },
+          {
+            "selected": false,
+            "text": "PKG",
+            "value": "PKG"
+          },
+          {
+            "selected": false,
+            "text": "PLTR",
+            "value": "PLTR"
+          },
+          {
+            "selected": false,
+            "text": "PANW",
+            "value": "PANW"
+          },
+          {
+            "selected": false,
+            "text": "PARA",
+            "value": "PARA"
+          },
+          {
+            "selected": false,
+            "text": "PH",
+            "value": "PH"
+          },
+          {
+            "selected": false,
+            "text": "PAYX",
+            "value": "PAYX"
+          },
+          {
+            "selected": false,
+            "text": "PAYC",
+            "value": "PAYC"
+          },
+          {
+            "selected": false,
+            "text": "PYPL",
+            "value": "PYPL"
+          },
+          {
+            "selected": false,
+            "text": "PNR",
+            "value": "PNR"
+          },
+          {
+            "selected": false,
+            "text": "PEP",
+            "value": "PEP"
+          },
+          {
+            "selected": false,
+            "text": "PFE",
+            "value": "PFE"
+          },
+          {
+            "selected": false,
+            "text": "PCG",
+            "value": "PCG"
+          },
+          {
+            "selected": false,
+            "text": "PM",
+            "value": "PM"
+          },
+          {
+            "selected": false,
+            "text": "PSX",
+            "value": "PSX"
+          },
+          {
+            "selected": false,
+            "text": "PNW",
+            "value": "PNW"
+          },
+          {
+            "selected": false,
+            "text": "PNC",
+            "value": "PNC"
+          },
+          {
+            "selected": false,
+            "text": "POOL",
+            "value": "POOL"
+          },
+          {
+            "selected": false,
+            "text": "PPG",
+            "value": "PPG"
+          },
+          {
+            "selected": false,
+            "text": "PPL",
+            "value": "PPL"
+          },
+          {
+            "selected": false,
+            "text": "PFG",
+            "value": "PFG"
+          },
+          {
+            "selected": false,
+            "text": "PG",
+            "value": "PG"
+          },
+          {
+            "selected": false,
+            "text": "PGR",
+            "value": "PGR"
+          },
+          {
+            "selected": false,
+            "text": "PLD",
+            "value": "PLD"
+          },
+          {
+            "selected": false,
+            "text": "PRU",
+            "value": "PRU"
+          },
+          {
+            "selected": false,
+            "text": "PEG",
+            "value": "PEG"
+          },
+          {
+            "selected": false,
+            "text": "PTC",
+            "value": "PTC"
+          },
+          {
+            "selected": false,
+            "text": "PSA",
+            "value": "PSA"
+          },
+          {
+            "selected": false,
+            "text": "PHM",
+            "value": "PHM"
+          },
+          {
+            "selected": false,
+            "text": "PWR",
+            "value": "PWR"
+          },
+          {
+            "selected": false,
+            "text": "QCOM",
+            "value": "QCOM"
+          },
+          {
+            "selected": false,
+            "text": "DGX",
+            "value": "DGX"
+          },
+          {
+            "selected": false,
+            "text": "RL",
+            "value": "RL"
+          },
+          {
+            "selected": false,
+            "text": "RJF",
+            "value": "RJF"
+          },
+          {
+            "selected": false,
+            "text": "RTX",
+            "value": "RTX"
+          },
+          {
+            "selected": false,
+            "text": "O",
+            "value": "O"
+          },
+          {
+            "selected": false,
+            "text": "REG",
+            "value": "REG"
+          },
+          {
+            "selected": false,
+            "text": "REGN",
+            "value": "REGN"
+          },
+          {
+            "selected": false,
+            "text": "RF",
+            "value": "RF"
+          },
+          {
+            "selected": false,
+            "text": "RSG",
+            "value": "RSG"
+          },
+          {
+            "selected": false,
+            "text": "RMD",
+            "value": "RMD"
+          },
+          {
+            "selected": false,
+            "text": "RVTY",
+            "value": "RVTY"
+          },
+          {
+            "selected": false,
+            "text": "ROK",
+            "value": "ROK"
+          },
+          {
+            "selected": false,
+            "text": "ROL",
+            "value": "ROL"
+          },
+          {
+            "selected": false,
+            "text": "ROP",
+            "value": "ROP"
+          },
+          {
+            "selected": false,
+            "text": "ROST",
+            "value": "ROST"
+          },
+          {
+            "selected": false,
+            "text": "RCL",
+            "value": "RCL"
+          },
+          {
+            "selected": false,
+            "text": "SPGI",
+            "value": "SPGI"
+          },
+          {
+            "selected": false,
+            "text": "CRM",
+            "value": "CRM"
+          },
+          {
+            "selected": false,
+            "text": "SBAC",
+            "value": "SBAC"
+          },
+          {
+            "selected": false,
+            "text": "SLB",
+            "value": "SLB"
+          },
+          {
+            "selected": false,
+            "text": "STX",
+            "value": "STX"
+          },
+          {
+            "selected": false,
+            "text": "SRE",
+            "value": "SRE"
+          },
+          {
+            "selected": false,
+            "text": "NOW",
+            "value": "NOW"
+          },
+          {
+            "selected": false,
+            "text": "SHW",
+            "value": "SHW"
+          },
+          {
+            "selected": false,
+            "text": "SPG",
+            "value": "SPG"
+          },
+          {
+            "selected": false,
+            "text": "SWKS",
+            "value": "SWKS"
+          },
+          {
+            "selected": false,
+            "text": "SJM",
+            "value": "SJM"
+          },
+          {
+            "selected": false,
+            "text": "SW",
+            "value": "SW"
+          },
+          {
+            "selected": false,
+            "text": "SNA",
+            "value": "SNA"
+          },
+          {
+            "selected": false,
+            "text": "SOLV",
+            "value": "SOLV"
+          },
+          {
+            "selected": false,
+            "text": "SO",
+            "value": "SO"
+          },
+          {
+            "selected": false,
+            "text": "LUV",
+            "value": "LUV"
+          },
+          {
+            "selected": false,
+            "text": "SWK",
+            "value": "SWK"
+          },
+          {
+            "selected": false,
+            "text": "SBUX",
+            "value": "SBUX"
+          },
+          {
+            "selected": false,
+            "text": "STT",
+            "value": "STT"
+          },
+          {
+            "selected": false,
+            "text": "STLD",
+            "value": "STLD"
+          },
+          {
+            "selected": false,
+            "text": "STE",
+            "value": "STE"
+          },
+          {
+            "selected": false,
+            "text": "SYK",
+            "value": "SYK"
+          },
+          {
+            "selected": false,
+            "text": "SMCI",
+            "value": "SMCI"
+          },
+          {
+            "selected": false,
+            "text": "SYF",
+            "value": "SYF"
+          },
+          {
+            "selected": false,
+            "text": "SNPS",
+            "value": "SNPS"
+          },
+          {
+            "selected": false,
+            "text": "SYY",
+            "value": "SYY"
+          },
+          {
+            "selected": false,
+            "text": "TMUS",
+            "value": "TMUS"
+          },
+          {
+            "selected": false,
+            "text": "TROW",
+            "value": "TROW"
+          },
+          {
+            "selected": false,
+            "text": "TTWO",
+            "value": "TTWO"
+          },
+          {
+            "selected": false,
+            "text": "TPR",
+            "value": "TPR"
+          },
+          {
+            "selected": false,
+            "text": "TRGP",
+            "value": "TRGP"
+          },
+          {
+            "selected": false,
+            "text": "TGT",
+            "value": "TGT"
+          },
+          {
+            "selected": false,
+            "text": "TEL",
+            "value": "TEL"
+          },
+          {
+            "selected": false,
+            "text": "TDY",
+            "value": "TDY"
+          },
+          {
+            "selected": false,
+            "text": "TFX",
+            "value": "TFX"
+          },
+          {
+            "selected": false,
+            "text": "TER",
+            "value": "TER"
+          },
+          {
+            "selected": false,
+            "text": "TSLA",
+            "value": "TSLA"
+          },
+          {
+            "selected": false,
+            "text": "TXN",
+            "value": "TXN"
+          },
+          {
+            "selected": false,
+            "text": "TPL",
+            "value": "TPL"
+          },
+          {
+            "selected": false,
+            "text": "TXT",
+            "value": "TXT"
+          },
+          {
+            "selected": false,
+            "text": "TMO",
+            "value": "TMO"
+          },
+          {
+            "selected": false,
+            "text": "TJX",
+            "value": "TJX"
+          },
+          {
+            "selected": false,
+            "text": "TSCO",
+            "value": "TSCO"
+          },
+          {
+            "selected": false,
+            "text": "TT",
+            "value": "TT"
+          },
+          {
+            "selected": false,
+            "text": "TDG",
+            "value": "TDG"
+          },
+          {
+            "selected": false,
+            "text": "TRV",
+            "value": "TRV"
+          },
+          {
+            "selected": false,
+            "text": "TRMB",
+            "value": "TRMB"
+          },
+          {
+            "selected": false,
+            "text": "TFC",
+            "value": "TFC"
+          },
+          {
+            "selected": false,
+            "text": "TYL",
+            "value": "TYL"
+          },
+          {
+            "selected": false,
+            "text": "TSN",
+            "value": "TSN"
+          },
+          {
+            "selected": false,
+            "text": "USB",
+            "value": "USB"
+          },
+          {
+            "selected": false,
+            "text": "UBER",
+            "value": "UBER"
+          },
+          {
+            "selected": false,
+            "text": "UDR",
+            "value": "UDR"
+          },
+          {
+            "selected": false,
+            "text": "ULTA",
+            "value": "ULTA"
+          },
+          {
+            "selected": false,
+            "text": "UNP",
+            "value": "UNP"
+          },
+          {
+            "selected": false,
+            "text": "UAL",
+            "value": "UAL"
+          },
+          {
+            "selected": false,
+            "text": "UPS",
+            "value": "UPS"
+          },
+          {
+            "selected": false,
+            "text": "URI",
+            "value": "URI"
+          },
+          {
+            "selected": false,
+            "text": "UNH",
+            "value": "UNH"
+          },
+          {
+            "selected": false,
+            "text": "UHS",
+            "value": "UHS"
+          },
+          {
+            "selected": false,
+            "text": "VLO",
+            "value": "VLO"
+          },
+          {
+            "selected": false,
+            "text": "VTR",
+            "value": "VTR"
+          },
+          {
+            "selected": false,
+            "text": "VLTO",
+            "value": "VLTO"
+          },
+          {
+            "selected": false,
+            "text": "VRSN",
+            "value": "VRSN"
+          },
+          {
+            "selected": false,
+            "text": "VRSK",
+            "value": "VRSK"
+          },
+          {
+            "selected": false,
+            "text": "VZ",
+            "value": "VZ"
+          },
+          {
+            "selected": false,
+            "text": "VRTX",
+            "value": "VRTX"
+          },
+          {
+            "selected": false,
+            "text": "VTRS",
+            "value": "VTRS"
+          },
+          {
+            "selected": false,
+            "text": "VICI",
+            "value": "VICI"
+          },
+          {
+            "selected": false,
+            "text": "V",
+            "value": "V"
+          },
+          {
+            "selected": false,
+            "text": "VST",
+            "value": "VST"
+          },
+          {
+            "selected": false,
+            "text": "VMC",
+            "value": "VMC"
+          },
+          {
+            "selected": false,
+            "text": "WRB",
+            "value": "WRB"
+          },
+          {
+            "selected": false,
+            "text": "GWW",
+            "value": "GWW"
+          },
+          {
+            "selected": false,
+            "text": "WAB",
+            "value": "WAB"
+          },
+          {
+            "selected": false,
+            "text": "WBA",
+            "value": "WBA"
+          },
+          {
+            "selected": false,
+            "text": "WMT",
+            "value": "WMT"
+          },
+          {
+            "selected": false,
+            "text": "DIS",
+            "value": "DIS"
+          },
+          {
+            "selected": false,
+            "text": "WBD",
+            "value": "WBD"
+          },
+          {
+            "selected": false,
+            "text": "WM",
+            "value": "WM"
+          },
+          {
+            "selected": false,
+            "text": "WAT",
+            "value": "WAT"
+          },
+          {
+            "selected": false,
+            "text": "WEC",
+            "value": "WEC"
+          },
+          {
+            "selected": false,
+            "text": "WFC",
+            "value": "WFC"
+          },
+          {
+            "selected": false,
+            "text": "WELL",
+            "value": "WELL"
+          },
+          {
+            "selected": false,
+            "text": "WST",
+            "value": "WST"
+          },
+          {
+            "selected": false,
+            "text": "WDC",
+            "value": "WDC"
+          },
+          {
+            "selected": false,
+            "text": "WY",
+            "value": "WY"
+          },
+          {
+            "selected": false,
+            "text": "WMB",
+            "value": "WMB"
+          },
+          {
+            "selected": false,
+            "text": "WTW",
+            "value": "WTW"
+          },
+          {
+            "selected": false,
+            "text": "WDAY",
+            "value": "WDAY"
+          },
+          {
+            "selected": false,
+            "text": "WYNN",
+            "value": "WYNN"
+          },
+          {
+            "selected": false,
+            "text": "XEL",
+            "value": "XEL"
+          },
+          {
+            "selected": false,
+            "text": "XYL",
+            "value": "XYL"
+          },
+          {
+            "selected": false,
+            "text": "YUM",
+            "value": "YUM"
+          },
+          {
+            "selected": false,
+            "text": "ZBRA",
+            "value": "ZBRA"
+          },
+          {
+            "selected": false,
+            "text": "ZBH",
+            "value": "ZBH"
+          },
+          {
+            "selected": false,
+            "text": "ZTS",
+            "value": "ZTS"
+          }
+        ],
+        "query": "MMM,AOS,ABT,ABBV,ACN,ADBE,AMD,AES,AFL,A,APD,ABNB,AKAM,ALB,ARE,ALGN,ALLE,LNT,ALL,GOOGL,GOOG,MO,AMZN,AMCR,AEE,AEP,AXP,AIG,AMT,AWK,AMP,AME,AMGN,APH,ADI,ANSS,AON,APA,APO,AAPL,AMAT,APTV,ACGL,ADM,ANET,AJG,AIZ,T,ATO,ADSK,ADP,AZO,AVB,AVY,AXON,BKR,BALL,BAC,BAX,BDX,B,BBY,TECH,BIIB,BLK,BX,BK,BA,BKNG,BWA,BSX,BMY,AVGO,BR,BRO,B,BLDR,BG,BXP,CHRW,CDNS,CZR,CPT,CPB,COF,CAH,KMX,CCL,CARR,CAT,CBOE,CBRE,CDW,CE,COR,CNC,CNP,CF,CRL,SCHW,CHTR,CVX,CMG,CB,CHD,CI,CINF,CTAS,CSCO,C,CFG,CLX,CME,CMS,KO,CTSH,CL,CMCSA,CAG,COP,ED,STZ,CEG,COO,CPRT,GLW,CPAY,CTVA,CSGP,COST,CTRA,CRWD,CCI,CSX,CMI,CVS,DHR,DRI,DVA,DAY,DECK,DE,DELL,DAL,DVN,DXCM,FANG,DLR,DFS,DG,DLTR,D,DPZ,DOV,DOW,DHI,DTE,DUK,DD,EMN,ETN,EBAY,ECL,EIX,EW,EA,ELV,EMR,ENPH,ETR,EOG,EPAM,EQT,EFX,EQIX,EQR,ERIE,ESS,EL,EG,EVRG,ES,EXC,EXPE,EXPD,EXR,XOM,FFIV,FDS,FICO,FAST,FRT,FDX,FIS,FITB,FSLR,FE,FI,FMC,F,FTNT,FTV,FOXA,FOX,BEN,FCX,GRMN,IT,GE,GEHC,GEV,GEN,GNRC,GD,GIS,GM,GPC,GILD,GPN,GL,GDDY,GS,HAL,HIG,HAS,HCA,DOC,HSIC,HSY,HES,HPE,HLT,HOLX,HD,HON,HRL,HST,HWM,HPQ,HUBB,HUM,HBAN,HII,IBM,IEX,IDXX,ITW,INCY,IR,PODD,INTC,ICE,IFF,IP,IPG,INTU,ISRG,IVZ,INVH,IQV,IRM,JBHT,JBL,JKHY,J,JNJ,JCI,JPM,JNPR,K,KVUE,KDP,KEY,KEYS,KMB,KIM,KMI,KKR,KLAC,KHC,KR,LHX,LH,LRCX,LW,LVS,LDOS,LEN,LII,LLY,LIN,LYV,LKQ,LMT,L,LOW,LULU,LYB,MTB,MPC,MKTX,MAR,MMC,MLM,MAS,MA,MTCH,MKC,MCD,MCK,MDT,MRK,META,MET,MTD,MGM,MCHP,MU,MSFT,MAA,MRNA,MHK,MOH,TAP,MDLZ,MPWR,MNST,MCO,MS,MOS,MSI,MSCI,NDAQ,NTAP,NFLX,NEM,NWSA,NWS,NEE,NKE,NI,NDSN,NSC,NTRS,NOC,NCLH,NRG,NUE,NVDA,NVR,NXPI,ORLY,OXY,ODFL,OMC,ON,OKE,ORCL,OTIS,PCAR,PKG,PLTR,PANW,PARA,PH,PAYX,PAYC,PYPL,PNR,PEP,PFE,PCG,PM,PSX,PNW,PNC,POOL,PPG,PPL,PFG,PG,PGR,PLD,PRU,PEG,PTC,PSA,PHM,PWR,QCOM,DGX,RL,RJF,RTX,O,REG,REGN,RF,RSG,RMD,RVTY,ROK,ROL,ROP,ROST,RCL,SPGI,CRM,SBAC,SLB,STX,SRE,NOW,SHW,SPG,SWKS,SJM,SW,SNA,SOLV,SO,LUV,SWK,SBUX,STT,STLD,STE,SYK,SMCI,SYF,SNPS,SYY,TMUS,TROW,TTWO,TPR,TRGP,TGT,TEL,TDY,TFX,TER,TSLA,TXN,TPL,TXT,TMO,TJX,TSCO,TT,TDG,TRV,TRMB,TFC,TYL,TSN,USB,UBER,UDR,ULTA,UNP,UAL,UPS,URI,UNH,UHS,VLO,VTR,VLTO,VRSN,VRSK,VZ,VRTX,VTRS,VICI,V,VST,VMC,WRB,GWW,WAB,WBA,WMT,DIS,WBD,WM,WAT,WEC,WFC,WELL,WST,WDC,WY,WMB,WTW,WDAY,WYNN,XEL,XYL,YUM,ZBRA,ZBH,ZTS",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "2024-08-26T04:00:00.000Z",
+    "to": "2025-02-25T05:00:00.000Z"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "LLM Local interpreter",
+  "uid": "aee5xe5ls9x4wd",
+  "version": 16,
+  "weekStart": ""
+}
