@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ClipLoader } from 'react-spinners';
 import ReactMarkdown from 'react-markdown';
 import { PanelProps } from '@grafana/data';
 import { SimpleOptions } from 'types';
@@ -56,12 +57,12 @@ const getStyles = () => {
 };
 
 const analysisOptions: { [key: string]: string }= {
-  Summary: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. Provide a brief summary of what the dashboard is displaying, focusing on the most critical and relevant data points. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and ensure that the summary captures the key insights without going into too much detail.`,
-  Insights: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. Please explain what the data is showing and share any insights you can gather from it. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and provide detailed insights into the data presented, highlighting any trends, patterns, or anomalies you observe.`,
-  Accessibility: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. Please explain what the data is showing in great detail, aiming to provide a clear description for users who may be visually impaired. Describe each panel's content and structure comprehensively. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and ensure that all aspects of the data are explained in a way that is accessible to all users.`,
-  Diagnosis: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. Please analyze the data for any potential issues or problems, highlighting correlations and any critical points of concern. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and provide a detailed diagnosis of any potential issues or inefficiencies indicated by the data.`,
-  Comparison: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. Compare the data across different panels to highlight any correlations, discrepancies, or significant differences. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and provide a comparative analysis, explaining how the data in various panels relate to each other.`,
-  Forecasting: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. Based on the current data, provide a forecast of future trends and usage patterns. Lighter colours on the heatmap indicate higher usage, darker colours indicate lower usage. Always start with "This dashboard shows..." and offer insights into what future data might look like, explaining the basis of your forecasts.`
+  Summary: `This image shows a Grafana dashboards. Focus solely on the dashboard panels. The first chart is a line chart showing the closing price of an S&P 500 stock. The second chart is a candlestick chart showing the prices of the same stock over time. The date range can be seen in the top right corner of the screen. Provide a brief summary of what the two dashboards show, focusing on the most critical and relevant data. Always start with "This dashboard shows..." and ensure the summary captures the key information without going into too much detail.`,
+  Insights: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. The first chart is a line chart showing the closing price of an S&P 500 stock. The second chart is a candlestick chart showing the prices of the same stock over time. The date range can be seen in the top right corner of the screen.Please explain what the data is showing and share any insights you can gather from it. Always start with "This dashboard shows..." and provide detailed insights into the data presented, highlighting any trends, patterns, or anomalies you observe.`,
+  Accessibility: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. The first chart is a line chart showing the closing price of an S&P 500 stock. The second chart is a candlestick chart showing the prices of the same stock over time. The date range can be seen in the top right corner of the screen.  Please explain what the data is showing in great detail, aiming to provide a clear description for users who may be visually impaired. Describe each panel's content and structure comprehensively. Always start with "This dashboard shows..." and ensure that all aspects of the data are explained in a way that is accessible to all users.`,
+  Diagnosis: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. The first chart is a line chart showing the closing price of an S&P 500 stock. The second chart is a candlestick chart showing the prices of the same stock over time. The date range can be seen in the top right corner of the screen. Please analyze the data for any potential issues or problems, highlighting correlations and any critical points of concern. Always start with "This dashboard shows..." and provide a detailed diagnosis of any potential issues or inefficiencies indicated by the data.`,
+  Comparison: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. The first chart is a line chart showing the closing price of an S&P 500 stock. The second chart is a candlestick chart showing the prices of the same stock over time. The date range can be seen in the top right corner of the screen. Compare the data across different panels to highlight any correlations, discrepancies, or significant differences. Always start with "This dashboard shows..." and provide a comparative analysis, explaining how the data in various panels relate to each other.`,
+  Forecasting: `This image shows a Grafana Dashboard. Only focus on the panels on the dashboard. The first chart is a line chart showing the closing price of an S&P 500 stock. The second chart is a candlestick chart showing the prices of the same stock over time. The date range can be seen in the top right corner of the screen. Based on the current data, provide a forecast of future trends and usage patterns. Always start with "This dashboard shows..." and offer insights into what future data might look like, explaining the basis of your forecasts.`
 };
 
 export const SimplePanel: React.FC<Props> = ({ options, data, width, height, fieldConfig, id }) => {  
@@ -74,7 +75,9 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height, fie
   const [selectedOption, setSelectedOption] = useState('');
   const [prompt, setPrompt] = useState(analysisOptions.Summary);
 
-  const handleOptionChange = (event: any) => {
+  const [showSpinner, setShowSpinner] = useState(false);
+
+  const handleOptionChange = (event: any) => {  
     const selected = event.target.value;
     setSelectedOption(selected);
     setPrompt(analysisOptions[selected]);
@@ -84,6 +87,8 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height, fie
     try {
       setButtonText('Analysing...');
       setButtonEnabled(false);
+      setShowSpinner(true);
+
       const elementToIgnore = document.querySelector('[data-testid="data-testid Panel header Chart Analyzer"]');
 
       if (elementToIgnore instanceof HTMLElement) {
@@ -118,6 +123,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height, fie
   
         setButtonText('Analyse');
         setButtonEnabled(true);
+        setShowSpinner(false);
       } catch (error) {
         console.error("Error parsing JSON:", error);
       }
@@ -139,6 +145,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height, fie
             <option key={option} value={option}>{option}</option>
           ))}
         </select>
+        {showSpinner && <ClipLoader color="#36d7b7" size={35} />}
         <button onClick={onButtonClick} disabled={!buttonEnabled}>{buttonText}</button>
       </div>
       {analysisText && (
