@@ -101,33 +101,34 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height, fie
       if (elementToIgnore instanceof HTMLElement) {
         elementToIgnore.style.display = 'flex'; 
       }
+      const match = options.Address.match(/(?:https?:\/\/)?(?:localhost:\d+\/)?(.+)/);
 
-      const response = await fetch('http://localhost:11434/api/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: options.Model,
-          prompt: prompt,
-          stream: false,
-          images: [base64Image],
-        })
-      });
-      const text = await response.text(); // Obtiene la respuesta como texto
-      console.log("Raw response:", text);
-
-      try {
-        const data = JSON.parse(text);
-        console.log("Parsed JSON:", data);
-        const responseData = data
-        setAnalysisText(responseData.response || 'Error processing response');
-  
-        setButtonText('Analyse');
-        setButtonEnabled(true);
-        setShowSpinner(false);
-      } catch (error) {
-        console.error("Error parsing JSON:", error);
+      if (match) {
+        const response = await fetch(`http://${match[1]}/api/generate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: options.Model,
+            prompt: prompt,
+            stream: false,
+            images: [base64Image],
+          })
+        });
+        const text = await response.text(); // Obtiene la respuesta como texto
+        console.log("Raw response:", text);
+        try {
+          const data = JSON.parse(text);
+          console.log("Parsed JSON:", data);
+          const responseData = data
+          setAnalysisText(responseData.response || 'Error processing response');
+    
+          setButtonText('Analyse');
+          setButtonEnabled(true);
+          setShowSpinner(false);
+        } catch (error) {
+          console.error("Error parsing JSON:", error);
+        }
       }
-
     } catch (err) {
       console.error(err);
     }
