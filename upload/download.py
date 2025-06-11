@@ -46,7 +46,6 @@ def get_sp500_data():
                     continue  # Skip assets with no data
                 history = history.reset_index()  
                 
-                #Agrego
                 for index, row in history.iterrows():
                     cursor.execute(f"""INSERT INTO sp500_{asset} (time, open,high,low_price,close_price,volume)
                         VALUES ('{row["Date"]}', '{float(row["Open"])}', '{float(row["High"])}', '{float(row["Low"])}', '{float(row["Close"])}', '{float(row["Volume"])}')
@@ -56,7 +55,14 @@ def get_sp500_data():
                 data_frames.append(history)
 
             except Exception as e:
-                print(f"Error fetching {asset}: {e}")
+                msg = str(e).lower()
+                if "rate limited" in msg or "too many request" in msg:
+                    print(f"[{asset}] Rate limited. Reintentando en {delay} segundos...")
+                    time.sleep(delay)
+                    delay *= 2  # backoff exponencial
+                else:
+                    print(f"[{asset}] Otro error: {e}")
+                    break
   
 
         conn.commit()
