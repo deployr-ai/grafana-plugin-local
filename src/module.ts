@@ -14,6 +14,6 @@ export const plugin = new PanelPlugin<SimpleOptions>(SimplePanel).setPanelOption
       path: 'Model',
       name: 'Model Name',
       description: '',
-      defaultValue: 'llama3.2-vision:latest',
+      defaultValue: 'moondream:1.8b',
     });
 });
