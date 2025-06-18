@@ -8,8 +8,6 @@ yarn-error.log*
 
 node_modules/
 
-# Csv
-*.csv
 *.xlsx
 
 # yarn
@@ -48,3 +46,4 @@ ci/
 .idea
 
 .eslintcache
+.venv/
