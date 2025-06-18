@@ -177,7 +177,7 @@
       "id": 2,
       "options": {
         "Address": "127.0.0.1:11434",
-        "Model": "llama3.2-vision:latest"
+        "Model": "moondream:1.8b"
       },
       "pluginVersion": "1.0.0",
       "targets": [
